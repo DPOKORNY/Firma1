@@ -1,0 +1,36 @@
+﻿@using Firma1.Models
+@model Heslo
+ 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/log.css")" rel="stylesheet">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                
+                @Html.PasswordFor(m => m.Password) 
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Přihlásit</button>
+            </form><!-- /form -->
+           
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    }
+</body>
+</html>
