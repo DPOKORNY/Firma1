@@ -1,0 +1,270 @@
+*          DATA SET PURXP00    AT LEVEL 016 AS OF 09/19/94              
+*          DATA SET PURXP00    AT LEVEL 044 AS OF 04/21/94              
+*********************************************************************** 
+*       TMUK SYSTEM MENU                                              * 
+*               FCB NAME      PURXP00                                 * 
+*                   FMT       PURP00                                  * 
+*                   MID       PURYP00                                 * 
+*                   MOD       PURXP00                                 * 
+*               TRAN CODE     MENU                                    * 
+*               DATE          MAY 1994                                * 
+*               AUTHOR        M. GALE                                 * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* ZISRD1  24-09-98            ADD TRANSACTIONS SU25,UU25              * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* JO KENDRICK 03-12-99        ADD TRANSACTIONS SU27, SU29             * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* ANDREW LEARY 08-05-00       ADD TRANSACTION  SU30                   * 
+*                             REMOVE TRANSACTIONS SU01 & UU01         * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* ANDREW LEARY 25-05-00       REMOVE TRANSACTION SU09                 * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* ANDREW LEARY 02-08-00       ADD TRANSACTIONS SU36 AND SU38          * 
+*********************************************************************** 
+*       MODIFICATION                                                  * 
+*   BY      DATE                     REASON                           * 
+* R. HEWETT    21-08-01       ADD TRANSACTIONS SU39,SU42 AND SU43     * 
+*---------------------------------------------------------------------* 
+*   EDS CHANGE LOG                                                    * 
+*   ==============                                                    * 
+*   EDS DATE      PROGRAMMER      DESCRIPTION OF CHANGE      GAP ID   * 
+*   --- ----      ----------      ---------------------      ------   * 
+*   01  2/10/2003 ANNICK VAN HOOF REMOVE OBSOLETE TRANSACTION         * 
+*                                 FROM SCREEN :                       * 
+*                                   SU29 COST PLANNING EXCHANGE       * 
+*                                        RATE MAINTENANCE             * 
+*                                                                     * 
+*                                                                     * 
+*   02 22/08/2007 J.SUCHANEK      SU29 HAS BEEN ADDED.       CR-224   * 
+*                                                                     * 
+*   03 18/10/2007 J.SUCHANEK      "TYRE ALLOCATION SYSTEM             * 
+*                                  MAINTENANCE" REPLACED BY           * 
+*                                 "PURTPUOM DB2 TABLE                 * 
+*                                  MAINTENANCE"                       * 
+*                                 "UNSETTLED PARTS WARNING            * 
+*                                  LIST VIEW" REPLACED BY             * 
+*                                 "PURTPPSA DB2 TABLE                 * 
+*                                  MAINTENANCE"                       * 
+*                                                                     * 
+*                                                                     * 
+*                                                                     * 
+*********************************************************************** 
+         PRINT NOGEN                                                    
+PURP00   FMT                                                            
+*                                                                       
+*        FOR SNA TERMINAL                                               
+*                                                                       
+         DEV   TYPE=3270-A02,                                          X
+               PFK=(PFKEY,                                             X
+               3='03',4='04'),                                         X
+               FEAT=IGNORE                                              
+         DIV   TYPE=INOUT                                               
+         DPAGE CURSOR=((03,12))                                         
+         DFLD  'PURSP001',POS=(02,01),ATTR=(PROT),EATTR=(,BLUE)         
+         DFLD  'PURCHASING SYSTEM   PRICE AND SUPPLIER MENU ',         X
+               POS=(02,18),ATTR=(PROT,HI)                               
+CDATE    DFLD  POS=(02,70),LTH=08,ATTR=(PROT),EATTR=(,BLUE)             
+CTIME    DFLD  POS=(03,70),LTH=08,ATTR=(PROT),EATTR=(,BLUE)             
+         DFLD  'JOB CODE =',POS=(03,01),ATTR=(PROT),EATTR=(,BLUE)       
+NUMBER   DFLD  POS=(03,12),LTH=04,ATTR=(,NOPROT,MOD)                    
+         DFLD  'SEARCH  UPDATE',                                       X
+               POS=(04,12),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD  'SU02',POS=(05,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU03',POS=(06,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU04',POS=(07,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU05',POS=(08,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(09,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU07',POS=(10,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU10',POS=(11,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(12,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(13,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU24',POS=(14,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU25',POS=(15,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU27',POS=(16,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU29',POS=(17,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU30',POS=(18,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU38',POS=(19,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU39',POS=(20,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU42',POS=(21,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU43',POS=(22,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(05,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU03',POS=(06,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(07,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(08,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU06',POS=(09,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU07',POS=(10,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU10',POS=(11,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU20',POS=(12,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU22',POS=(13,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(14,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(15,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(16,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(17,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(18,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(19,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(20,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(21,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(22,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD 'PRICE HISTORY SEARCH BY PART NO           ',            X
+               POS=(05,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'SUPPLIER DB MAINTAIN AND SEARCH           ',            X
+               POS=(06,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'SUPPLIER SEARCH BY PART NO                ',            X
+               POS=(07,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'RECEIVING RESULTS SEARCH BY PART-NO.      ',            X
+               POS=(08,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'RETROACTIVE PRICING CONFIRMATION          ',            X
+               POS=(09,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'EMPLOYEE DB MAINTAIN                      ',            X
+               POS=(10,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'ANNUAL PRICE REVIEW                       ',            X
+               POS=(11,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'UPDATE BUYER CODE                         ',            X
+               POS=(12,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'MAINTAIN PRICE ERRORS                     ',            X
+               POS=(13,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'DELIVERY ENQUIRY                          ',            X
+               POS=(14,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'CURRENCY CONVERSION BY SUPPLIER          ',             X
+               POS=(15,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PRICE HISTORY SEARCH                     ',             X
+               POS=(16,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'AMENDMENTS ON THE DB2 TABLE PURTPSUP',                  X
+               POS=(17,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURCHASE DB MAINTAIN ',                                 X
+               POS=(18,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PMA REPRINT FACILITY',                                  X
+               POS=(19,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURTPUOM DB2 TABLE MAINTENANCE',                        X
+               POS=(20,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PRICE ALARM LIST VIEW',                                 X
+               POS=(21,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURTPPSA DB2 TABLE MAINTENANCE',                        X
+               POS=(22,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD  'PF3=PREV, PF4=MAIN MENU         ',                     X
+               POS=(23,02),ATTR=(PROT),EATTR=(,PINK)                    
+MSG      DFLD  POS=(24,02),LTH=78,ATTR=(PROT,HI)                        
+*********************************************************************** 
+*        FOR NON SNA TERMINAL                                           
+*********************************************************************** 
+         DEV   TYPE=(3270,2),                                          X
+               PFK=(PFKEY,                                             X
+               3='03',4='04'),                                         X
+               FEAT=IGNORE                                              
+         DIV   TYPE=INOUT                                               
+         DPAGE CURSOR=((03,12))                                         
+         DFLD  'PURSP001',POS=(02,01),ATTR=(PROT),EATTR=(,BLUE)         
+         DFLD  'PURCHASING SYSTEM   PRICE AND SUPPLIER MENU ',         X
+               POS=(02,18),ATTR=(PROT,HI)                               
+CDATE    DFLD  POS=(02,70),LTH=08,ATTR=(PROT),EATTR=(,BLUE)             
+CTIME    DFLD  POS=(03,70),LTH=08,ATTR=(PROT),EATTR=(,BLUE)             
+         DFLD  'JOB CODE =',POS=(03,01),ATTR=(PROT),EATTR=(,BLUE)       
+NUMBER   DFLD  POS=(03,12),LTH=04,ATTR=(,NOPROT,MOD)                    
+         DFLD  'SEARCH  UPDATE',                                       X
+               POS=(04,12),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD  'SU02',POS=(05,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU03',POS=(06,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU04',POS=(07,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU05',POS=(08,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(09,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU07',POS=(10,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU10',POS=(11,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(12,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(13,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU24',POS=(14,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU25',POS=(15,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU27',POS=(16,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU29',POS=(17,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU30',POS=(18,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU38',POS=(19,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU39',POS=(20,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU42',POS=(21,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  'SU43',POS=(22,12),ATTR=(PROT),EATTR=(,YELLOW)           
+         DFLD  '****',POS=(05,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU03',POS=(06,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(07,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(08,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU06',POS=(09,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU07',POS=(10,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU10',POS=(11,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU20',POS=(12,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  'UU22',POS=(13,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(14,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(15,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(16,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(17,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(18,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(19,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(20,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(21,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD  '****',POS=(22,20),ATTR=(PROT),EATTR=(,TURQ)             
+         DFLD 'PRICE HISTORY SEARCH BY PART NO           ',            X
+               POS=(05,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'SUPPLIER DB MAINTAIN AND SEARCH           ',            X
+               POS=(06,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'SUPPLIER SEARCH BY PART NO                ',            X
+               POS=(07,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'RECEIVING RESULTS SEARCH BY PART-NO.      ',            X
+               POS=(08,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'RETROACTIVE PRICING CONFIRMATION          ',            X
+               POS=(09,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'EMPLOYEE DB MAINTAIN                      ',            X
+               POS=(10,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'ANNUAL PRICE REVIEW                       ',            X
+               POS=(11,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'UPDATE BUYER CODE                         ',            X
+               POS=(12,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'MAINTAIN PRICE ERRORS                     ',            X
+               POS=(13,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'DELIVERY ENQUIRY                          ',            X
+               POS=(14,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'CURRENCY CONVERSION BY SUPPLIER          ',             X
+               POS=(15,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PRICE HISTORY SEARCH                     ',             X
+               POS=(16,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'AMENDMENTS ON THE DB2 TABLE PURTPSUP     ',             X
+               POS=(17,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURCHASE DB MAINTAIN ',                                 X
+               POS=(18,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PMA REPRINT FACILITY',                                  X
+               POS=(19,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURTPUOM DB2 TABLE MAINTENANCE',                        X
+               POS=(20,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PRICE ALARM LIST VIEW',                                 X
+               POS=(21,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD 'PURTPPSA DB2 TABLE MAINTENANCE',                        X
+               POS=(22,31),ATTR=(PROT),EATTR=(,BLUE)                    
+         DFLD  'PF3=PREV, PF4=MAIN MENU         ',                     X
+               POS=(23,02),ATTR=(PROT),EATTR=(,PINK)                    
+MSG      DFLD  POS=(24,02),LTH=78,ATTR=(PROT,HI)                        
+         FMTEND                                                         
+*********************************************************************** 
+*        M I D     ( MESSAGE  INPUT  DESCRIPTION )                    * 
+*********************************************************************** 
+PURYP00  MSG   TYPE=INPUT,SOR=PURP00,OPT=1,NXT=PURXP00                  
+         SEG                                                            
+         MFLD  'PURSP001 ',LTH=09                                       
+         MFLD  PFKEY,LTH=02                                             
+         MFLD  NUMBER,LTH=04                                            
+         MSGEND                                                         
+*********************************************************************** 
+*        M O D     ( MESSAGE  OUTPUT  DESCRIPTION )                   * 
+*********************************************************************** 
+PURXP00  MSG   TYPE=OUTPUT,SOR=(PURP00,IGNORE),OPT=1,NXT=PURYP00        
+         SEG                                                            
+         MFLD  (CDATE,DATE3)                                            
+         MFLD  (CTIME,TIME)                                             
+         MFLD  NUMBER,LTH=06,ATTR=YES                                   
+         MFLD  MSG,LTH=78                                               
+         MSGEND                                                         
+         END         

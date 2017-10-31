@@ -1,0 +1,175 @@
+*********************************************************************** 
+*          PRICE ERROR DATA UPDATE FACILITY                           * 
+*               FCB NAME      PURX324                                 * 
+*                   FMT       PUR324                                  * 
+*                   MID       PURY324                                 * 
+*                   MOD       PURX324                                 * 
+*               TRAN CODE     PURS324                                 * 
+*               DATE          17/01/1996                               *
+*               AUTHOR        N. GLOVER                               * 
+*********************************************************************** 
+         PRINT NOGEN                                                    
+PUR324   FMT                                                            
+         DEV   TYPE=3270-A02,FEAT=IGNORE,                              X
+               PFK=(PFKY,                                              X
+               'OTH','OTH','PF3','PF4','OTH',                          X
+               'PF6','PF7','PF8','OTH','OTH')                           
+         DIV   TYPE=INOUT                                               
+         DPAGE CURSOR=((03,18))                                         
+         DFLD  'PURS324',POS=(01,02),ATTR=(PROT)                        
+         DFLD  ' D E L I V E R Y   E N Q U I R Y ',                    X
+               POS=(01,20),ATTR=(PROT),EATTR=(HREV)                     
+         DFLD  'INVOICE NUMBER',                                       X
+               POS=(03,03),ATTR=(PROT)                                  
+         DFLD  'PART NUMBER',                                          X
+               POS=(03,32),ATTR=(PROT)                                  
+         DFLD  'SUPPLIER',                                             X
+               POS=(03,62),ATTR=(PROT)                                  
+         DFLD  'PART NUM',                                             X
+               POS=(05,03),ATTR=(PROT)                                  
+         DFLD  'DOCK',                                                 X
+               POS=(05,17),ATTR=(PROT)                                  
+         DFLD  'ITEM',                                                 X
+               POS=(05,22),ATTR=(PROT)                                  
+         DFLD  'CAT',                                                  X
+               POS=(05,27),ATTR=(PROT)                                  
+         DFLD  'BUYER',                                                X
+               POS=(05,31),ATTR=(PROT)                                  
+         DFLD  'QTY',                                                  X
+               POS=(05,39),ATTR=(PROT)                                  
+         DFLD  'UOM',                                                  X
+               POS=(05,46),ATTR=(PROT)                                  
+         DFLD  'RCVD DATE',                                            X
+               POS=(05,51),ATTR=(PROT)                                  
+         DFLD  'STATUS',                                               X
+               POS=(05,61),ATTR=(PROT)                                  
+         DFLD  'STATUS CODES: E#=ERROR(SEE BELOW), C=CURRENT MONTH, H=HX
+               ISTORY',POS=(22,03),ATTR=(PROT),EATTR=(HREV)             
+         DFLD  'ERROR CODES : E1=PART/SUPP, E2=PRICE, E3=UOM, E4=SUPLCDX
+                , E5=SHIPCD',POS=(23,03),ATTR=(PROT),EATTR=(HREV)       
+*************                                                           
+CDATE    DFLD  POS=(01,70),LTH=08,ATTR=PROT                             
+CTIME    DFLD  POS=(02,70),LTH=08,ATTR=PROT                             
+INVOICEN DFLD  POS=(03,18),LTH=10,ATTR=(,MOD),EATTR=(HREV)              
+IPARTNA  DFLD  POS=(03,45),LTH=05,ATTR=(,MOD),EATTR=(HREV)              
+IPARTNB  DFLD  POS=(03,51),LTH=05,ATTR=(,MOD),EATTR=(HREV)              
+SUPL     DFLD  POS=(03,71),LTH=04,ATTR=(PROT),EATTR=(HREV)              
+         DO 16                                                          
+PARTNA   DFLD  POS=(06,02),LTH=05,ATTR=PROT                             
+PARTNB   DFLD  POS=(06,08),LTH=05,ATTR=PROT                             
+PARTNC   DFLD  POS=(06,14),LTH=02,ATTR=PROT                             
+DOCK     DFLD  POS=(06,18),LTH=02,ATTR=PROT                             
+ITEM     DFLD  POS=(06,23),LTH=01,ATTR=PROT                             
+CAT      DFLD  POS=(06,28),LTH=01,ATTR=PROT                             
+BUYER    DFLD  POS=(06,32),LTH=02,ATTR=PROT                             
+QTY      DFLD  POS=(06,37),LTH=07,ATTR=PROT                             
+UOM      DFLD  POS=(06,45),LTH=05,ATTR=PROT                             
+RCVDDATE DFLD  POS=(06,51),LTH=08,ATTR=PROT                             
+STATUS   DFLD  POS=(06,63),LTH=02,ATTR=PROT                             
+*************                                                           
+         ENDDO                                                          
+*************                                                           
+MSG      DFLD  POS=(24,02),LTH=78,ATTR=(,PROT,HI)                       
+*                                                                       
+*        FOR NON SNA TERMINAL TYPE                                      
+*                                                                       
+         DEV   TYPE=(3270,2),FEAT=IGNORE,                              X
+               PFK=(PFKY,                                              X
+               'OTH','OTH','PF3','PF4','OTH',                          X
+               'PF6','PF7','PF8','OTH','OTH')                           
+         DIV   TYPE=INOUT                                               
+         DPAGE CURSOR=((03,18))                                         
+         DFLD  'PURS324',POS=(01,02),ATTR=(PROT)                        
+         DFLD  ' D E L I V E R Y   E N Q U I R Y ',                    X
+               POS=(01,20),ATTR=(PROT),EATTR=(HREV)                     
+         DFLD  'INVOICE NUMBER',                                       X
+               POS=(03,03),ATTR=(PROT)                                  
+         DFLD  'PART NUMBER',                                          X
+               POS=(03,32),ATTR=(PROT)                                  
+         DFLD  'SUPPLIER',                                             X
+               POS=(03,62),ATTR=(PROT)                                  
+         DFLD  'PART NUM',                                             X
+               POS=(05,03),ATTR=(PROT)                                  
+         DFLD  'DOCK',                                                 X
+               POS=(05,17),ATTR=(PROT)                                  
+         DFLD  'ITEM',                                                 X
+               POS=(05,22),ATTR=(PROT)                                  
+         DFLD  'CAT',                                                  X
+               POS=(05,27),ATTR=(PROT)                                  
+         DFLD  'BUYER',                                                X
+               POS=(05,31),ATTR=(PROT)                                  
+         DFLD  'QTY',                                                  X
+               POS=(05,39),ATTR=(PROT)                                  
+         DFLD  'UOM',                                                  X
+               POS=(05,46),ATTR=(PROT)                                  
+         DFLD  'RCVD DATE',                                            X
+               POS=(05,51),ATTR=(PROT)                                  
+         DFLD  'STATUS',                                               X
+               POS=(05,61),ATTR=(PROT)                                  
+         DFLD  'STATUS CODES: E#=ERROR(SEE BELOW), C=CURRENT MONTH, H=HX
+               ISTORY',POS=(22,03),ATTR=(PROT),EATTR=(HREV)             
+         DFLD  'ERROR CODES : E1=PART/SUPP, E2=PRICE, E3=UOM, E4=SUPLCDX
+                , E5=SHIPCD',POS=(23,03),ATTR=(PROT),EATTR=(HREV)       
+*************                                                           
+CDATE    DFLD  POS=(01,70),LTH=08,ATTR=PROT                             
+CTIME    DFLD  POS=(02,70),LTH=08,ATTR=PROT                             
+INVOICEN DFLD  POS=(03,18),LTH=10,ATTR=(,MOD),EATTR=(HREV)              
+IPARTNA  DFLD  POS=(03,45),LTH=05,ATTR=(,MOD),EATTR=(HREV)              
+IPARTNB  DFLD  POS=(03,51),LTH=05,ATTR=(,MOD),EATTR=(HREV)              
+SUPL     DFLD  POS=(03,71),LTH=04,ATTR=(PROT),EATTR=(HREV)              
+         DO 16                                                          
+PARTNA   DFLD  POS=(06,02),LTH=05,ATTR=PROT                             
+PARTNB   DFLD  POS=(06,08),LTH=05,ATTR=PROT                             
+PARTNC   DFLD  POS=(06,14),LTH=02,ATTR=PROT                             
+DOCK     DFLD  POS=(06,18),LTH=02,ATTR=PROT                             
+ITEM     DFLD  POS=(06,23),LTH=01,ATTR=PROT                             
+CAT      DFLD  POS=(06,28),LTH=01,ATTR=PROT                             
+BUYER    DFLD  POS=(06,32),LTH=02,ATTR=PROT                             
+QTY      DFLD  POS=(06,37),LTH=07,ATTR=PROT                             
+UOM      DFLD  POS=(06,45),LTH=05,ATTR=PROT                             
+RCVDDATE DFLD  POS=(06,51),LTH=08,ATTR=PROT                             
+STATUS   DFLD  POS=(06,63),LTH=02,ATTR=PROT                             
+*************                                                           
+         ENDDO                                                          
+*************                                                           
+MSG      DFLD  POS=(24,02),LTH=78,ATTR=(,PROT,HI)                       
+         FMTEND                                                         
+*********************************************************************** 
+*        M I D     ( MESSAGE  INPUT  DESCRIPTION )                    * 
+*********************************************************************** 
+PURY324  MSG   TYPE=INPUT,SOR=PUR324,OPT=1,NXT=PURX324                  
+         SEG                                                            
+         MFLD  'SU24 ',LTH=09                                           
+         MFLD  (PFKY,'ENT'),LTH=03                                      
+         MFLD  INVOICEN,LTH=10,FILL=X'00'                               
+         MFLD  IPARTNA,LTH=05,FILL=X'00'                                
+         MFLD  IPARTNB,LTH=05,FILL=X'00'                                
+         MSGEND                                                         
+*********************************************************************** 
+*        M O D     ( MESSAGE  OUTPUT  DESCRIPTION )                   * 
+*********************************************************************** 
+PURX324  MSG   TYPE=OUTPUT,SOR=(PUR324,IGNORE),OPT=1,NXT=PURY324        
+         SEG                                                            
+         MFLD  (CDATE,DATE3)                                            
+         MFLD  (CTIME,TIME)                                             
+         MFLD  INVOICEN,LTH=12,ATTR=YES                                 
+         MFLD  IPARTNA,LTH=07,ATTR=YES                                  
+         MFLD  IPARTNB,LTH=07,ATTR=YES                                  
+         MFLD  SUPL,LTH=06,ATTR=YES                                     
+         DO 16                                                          
+         MFLD  PARTNA,LTH=07,ATTR=YES                                   
+         MFLD  PARTNB,LTH=07,ATTR=YES                                   
+         MFLD  PARTNC,LTH=04,ATTR=YES                                   
+         MFLD  DOCK,LTH=04,ATTR=YES                                     
+         MFLD  ITEM,LTH=03,ATTR=YES                                     
+         MFLD  CAT,LTH=03,ATTR=YES                                      
+         MFLD  BUYER,LTH=04,ATTR=YES                                    
+         MFLD  QTY,LTH=09,ATTR=YES                                      
+         MFLD  UOM,LTH=07,ATTR=YES                                      
+         MFLD  RCVDDATE,LTH=10,ATTR=YES                                 
+         MFLD  STATUS,LTH=04,ATTR=YES                                   
+         ENDDO                                                          
+         MFLD  MSG,LTH=80,ATTR=YES                                      
+         MSGEND                                                         
+         END                                                            
+

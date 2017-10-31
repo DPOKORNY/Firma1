@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+
+    int zaklPoz = 01;
+    int p = 0;
+    List<string> lisst = ViewBag.A;
+
+}
+<body style="background-color:black"></body>
+<h1 style="color:blue;text-align:center;margin-top:30px">TRANSAKCE</h1>
+ <div style="position:absolute;left:320px">
+
+    @{
+        int poz;
+
+        for (int i = 0; i < lisst.Count(); i = i + 4)
+        {
+            poz = int.Parse(lisst[i + 1]);
+            if (poz > zaklPoz)
+            {
+                { <br />}
+            }
+
+
+            {
+
+
+                <span style="color:@lisst[i+3];font-size:large;position:absolute;top:@(25 * (int.Parse(lisst[i + 1])) + "px");left:@(8 * (int.Parse(lisst[i + 2])) + "px")">
+                    @if (lisst[i] == "?")
+                    {
+                        { <br/><input type="text" style="width:60px;margin-top:-5px"/>}
+                    }
+
+                    else
+                    {<pre>@lisst[i]</pre>}
+
+                </span>
+
+            }
+            zaklPoz = poz;
+        }
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
