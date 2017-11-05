@@ -110,6 +110,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="temp\PURTDELI.inc" />
     <Content Include="temp\Trans.txt">
       <SubType>Designer</SubType>
     </Content>

@@ -1,4 +1,14 @@
-﻿
+﻿@{ 
+    List<string> list = ViewBag.Tabulka;
+}
+
+<div>@{
+    foreach (string s in list)
+    {
+        @s<br/>
+    }
+}</div>
+
 <div class="jumbotron">
     <h1>Tvoříme webové aplikace</h1>
     <p class="lead">Tvoříme jednoduché a moderní webové stránky a aplikace na míru v .Netu</p>
@@ -28,3 +38,4 @@
         <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
     </div>
 </div>
+
